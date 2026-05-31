@@ -19,6 +19,7 @@
     "test": "npm run test:api && npm run test:ui"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.1"
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^22.10.2"
   }
 }
