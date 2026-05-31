@@ -8,7 +8,7 @@ This repository demonstrates a simple but powerful shift:
 - Tests in `tests/` are generated artifacts.
 - AI agents (simulated here with scripts) analyze change impact and keep quality assets aligned.
 
-Conference flow:
+Flow:
 
 ```text
 PR -> Knowledge Update -> Test Generation -> Execution -> Feedback -> Knowledge Evolution
