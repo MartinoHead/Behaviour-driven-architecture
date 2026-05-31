@@ -334,3 +334,13 @@ Sync validation enforces:
 
 * Matching rule IDs across all three formats
 * Matching rule intent text across all three formats
+
+## Skill Extensions
+
+Additional repository skills are available under `.github/skills/`:
+
+* `bda-knowledge-sync-governance`
+* `bda-api-test-design-patterns`
+* `bda-change-impact-analysis`
+* `bda-incident-to-knowledge`
+* `bda-quality-gates`
