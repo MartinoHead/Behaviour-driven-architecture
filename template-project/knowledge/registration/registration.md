@@ -41,3 +41,10 @@ Allow a new user to create an account securely.
 - Password rule updated in REG-003: minimum length 8 -> 10.
 - Email validation behavior marked as impacted (REG-001/REG-002).
 <!-- PR-IMPACT:END -->
+
+<!-- CLOSED-LOOP:START -->
+## Closed Loop Trace
+- updatedAt: 2026-05-31T06:42:20.480Z
+- domain: registration
+- reason: Password policy changed to min 10 characters
+<!-- CLOSED-LOOP:END -->

@@ -10,6 +10,7 @@ From template-project:
 npm run simulate:impact
 npm run simulate:knowledge-update
 npm run analyze:pr-impact
+npm run simulate:closed-loop
 npm run generate:md-tests
 npm run demo:execute
 ```

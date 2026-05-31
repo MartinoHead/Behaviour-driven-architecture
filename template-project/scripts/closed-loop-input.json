@@ -1,0 +1,6 @@
+{
+  "filesChanged": [
+    "src/auth/register.ts"
+  ],
+  "description": "Password policy changed to min 10 characters"
+}
