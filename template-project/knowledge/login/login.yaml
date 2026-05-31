@@ -1,0 +1,9 @@
+feature: Login
+intent: Allow an existing user to authenticate securely and access the application.
+rules:
+  - id: LGN-001
+    title: Login requires registered email.
+  - id: LGN-002
+    title: Login requires correct password for the registered email.
+  - id: LGN-003
+    title: Successful login returns an active session token.

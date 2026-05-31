@@ -93,6 +93,7 @@ repository/
 │
 ├── tests/
 │   ├── playwright/
+│   ├── api/
 │
 ├── knowledge/
 │   ├── registration.md
@@ -287,7 +288,8 @@ This repository includes a starter implementation in `template-project/` to boot
 ## What is included
 
 * Seed behavior knowledge files in `knowledge/` as `.md`, `.yaml`, and `.feature`
-* Playwright test location in `tests/playwright/`
+* Playwright UI tests in `tests/playwright/`
+* API tests in `tests/api/`
 * Rule parser, sync validator, coverage check, and test generation scripts in `scripts/`
 * CI workflow in `.github/workflows/quality.yml`
 
@@ -316,16 +318,17 @@ npm run generate:tests
 
 ```bash
 npm run verify:coverage
-npm test
+npm run test:api
+npm run test:ui
 ```
 
 ## Knowledge sync contract
 
-Each feature must exist in all three formats with the same base name:
+Use feature-based folders. Each feature must exist in all three formats:
 
-* `knowledge/<feature>.md`
-* `knowledge/<feature>.yaml`
-* `knowledge/<feature>.feature`
+* `knowledge/<feature>/<feature>.md`
+* `knowledge/<feature>/<feature>.yaml`
+* `knowledge/<feature>/<feature>.feature`
 
 Sync validation enforces:
 

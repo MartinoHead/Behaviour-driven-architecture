@@ -1,0 +1,9 @@
+feature: Get User
+intent: Allow authorized clients to retrieve user details by identifier.
+rules:
+  - id: USG-001
+    title: Get user requires authorization.
+  - id: USG-002
+    title: Get user requires existing user identifier.
+  - id: USG-003
+    title: Successful get user returns user details payload.

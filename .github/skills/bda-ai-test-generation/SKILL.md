@@ -1,11 +1,11 @@
 ---
 name: bda-ai-test-generation
-description: Generate deterministic Playwright tests from behavior knowledge files and keep rule-to-test traceability.
+description: Generate deterministic UI and API tests from synchronized behavior knowledge files and keep rule-to-test traceability.
 ---
 
 # BDA AI Test Generation Skill
 
-Use this skill when generating or updating automated tests from `knowledge/*.md` files.
+Use this skill when generating or updating automated tests from synchronized knowledge files in `knowledge/*.md`, `knowledge/*.yaml`, and `knowledge/*.feature`.
 
 ## Goals
 
@@ -17,9 +17,10 @@ Use this skill when generating or updating automated tests from `knowledge/*.md`
 
 1. Read impacted `knowledge/*.md` files.
 2. Extract rules and expected outcomes.
-3. Generate tests in `tests/playwright/` grouped by feature.
-4. Add traceability comments with rule IDs.
-5. Run tests and report pass/fail per rule.
+3. Generate UI tests in `tests/playwright/` grouped by feature.
+4. Generate API tests in `tests/api/` grouped by feature.
+5. Add traceability comments with rule IDs.
+6. Run tests and report pass/fail per rule.
 
 ## Test Constraints
 
@@ -31,7 +32,8 @@ Use this skill when generating or updating automated tests from `knowledge/*.md`
 
 ## Naming Convention
 
-- File: `<feature>.spec.ts`
+- UI File: `<feature>.spec.ts`
+- API File: `<feature>.api.spec.ts`
 - Test title: `[RULE-ID] <human-readable expectation>`
 
 ## Output Contract

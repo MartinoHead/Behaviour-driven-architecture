@@ -1,0 +1,9 @@
+feature: Create User
+intent: Allow an authorized actor to create a new user account through API or admin workflow.
+rules:
+  - id: USR-001
+    title: Create user requires authorization.
+  - id: USR-002
+    title: Create user requires unique email.
+  - id: USR-003
+    title: Successful create user returns created user identifier.

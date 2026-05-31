@@ -5,9 +5,11 @@
   "description": "Starter template for Product Knowledge as Code architecture",
   "scripts": {
     "verify:sync": "node scripts/verify-sync.js",
-    "generate:tests": "npm run verify:sync && node scripts/generate-tests.js",
+    "generate:tests": "npm run verify:sync && node scripts/generate-tests.js && node scripts/generate-api-tests.js",
     "verify:coverage": "node scripts/rule-coverage.js",
-    "test": "playwright test"
+    "test:api": "npx playwright test --config=playwright.api.config.ts",
+    "test:ui": "npx playwright test",
+    "test": "npm run test:api && npm run test:ui"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.1"

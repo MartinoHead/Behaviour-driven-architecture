@@ -67,8 +67,28 @@ function parseGherkinRules(content) {
   return rules;
 }
 
+function listKnowledgeFiles(dir, rootDir = dir) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...listKnowledgeFiles(fullPath, rootDir));
+      continue;
+    }
+
+    const ext = path.extname(entry.name).toLowerCase();
+    if (['.md', '.yaml', '.yml', '.feature'].includes(ext)) {
+      files.push(path.relative(rootDir, fullPath));
+    }
+  }
+
+  return files;
+}
+
 function findFeatureFiles(knowledgeDir) {
-  const files = fs.readdirSync(knowledgeDir);
+  const files = listKnowledgeFiles(knowledgeDir);
   const features = new Map();
 
   for (const file of files) {
@@ -77,7 +97,8 @@ function findFeatureFiles(knowledgeDir) {
       continue;
     }
 
-    const name = path.basename(file, ext);
+    const parentDir = path.dirname(file);
+    const name = parentDir === '.' ? path.basename(file, ext) : parentDir;
     const entry = features.get(name) || { md: null, yaml: null, gherkin: null };
 
     if (ext === '.md') {
