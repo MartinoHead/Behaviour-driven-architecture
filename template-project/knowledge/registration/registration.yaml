@@ -6,6 +6,6 @@ rules:
   - id: REG-002
     title: Email must be unique.
   - id: REG-003
-    title: Password length must be at least 8 characters.
+    title: Password length must be at least 10 characters.
   - id: REG-004
     title: Verification email is sent after successful registration.

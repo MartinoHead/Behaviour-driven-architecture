@@ -1,0 +1,98 @@
+// Prisma schema for template-project real API
+// Database: PostgreSQL
+// Run: npx prisma migrate dev --name init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ────────────────────────────────────────────────────────────────
+// Auth / Identity
+// ────────────────────────────────────────────────────────────────
+
+model AuthUser {
+  id        String   @id @default(uuid())
+  publicId  String   @unique
+  email     String   @unique
+  password  String
+  locked    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sessions  Session[]
+  orders    Order[]
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+
+  userId String
+  user   AuthUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ────────────────────────────────────────────────────────────────
+// Managed Users (create-user / get-user domain)
+// ────────────────────────────────────────────────────────────────
+
+model ManagedUser {
+  id        String   @id @default(uuid())
+  publicId  String   @unique
+  email     String   @unique
+  firstName String
+  lastName  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ────────────────────────────────────────────────────────────────
+// Checkout / Orders
+// ────────────────────────────────────────────────────────────────
+
+model Order {
+  id          String      @id @default(uuid())
+  reference   String      @unique
+  status      OrderStatus @default(PENDING)
+  paymentToken String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  userId String?
+  user   AuthUser? @relation(fields: [userId], references: [id], onDelete: Restrict)
+
+  items           OrderItem[]
+  shippingAddress ShippingAddress?
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  FAILED
+}
+
+model OrderItem {
+  id       String @id @default(uuid())
+  sku      String
+  quantity Int
+
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model ShippingAddress {
+  id         String @id @default(uuid())
+  line1      String
+  city       String
+  postalCode String
+  country    String
+
+  orderId String @unique
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}

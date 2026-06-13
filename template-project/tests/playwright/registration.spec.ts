@@ -13,7 +13,7 @@ test('[REG-002] Email must be unique.', async ({ page }) => {
   // Use resilient locators and deterministic assertions.
 });
 
-test('[REG-003] Password length must be at least 8 characters.', async ({ page }) => {
+test('[REG-003] Password length must be at least 10 characters.', async ({ page }) => {
   // TODO: implement scenario for REG-003.
   // Use resilient locators and deterministic assertions.
 });

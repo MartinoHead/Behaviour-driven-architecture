@@ -14,8 +14,8 @@ Feature: Registration
     Then a duplicate email error is shown
 
   @REG-003
-  Scenario: Password length must be at least 8 characters.
-    Given a user enters a password shorter than 8 characters
+  Scenario: Password length must be at least 10 characters.
+    Given a user enters a password shorter than 10 characters
     When the user submits registration
     Then a password validation error is shown
 
